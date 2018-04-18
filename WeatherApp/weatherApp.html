@@ -1,0 +1,188 @@
+<!--
+Beginning of Weather App
+
+Also requires files:
+	weather.css
+	weather.js
+-->
+
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width"> 
+	<title>Weather App</title>
+	<link rel="stylesheet" type="text/css" href="http://web.cs.ucdavis.edu/~amenta/s17/reset.css">
+	<link rel="stylesheet" type="text/css" href="weather.css"></link>
+</head>
+
+<body onload="init()" onresize="init()">
+<main>
+	<div class="search">
+		<div class="datetime">
+			<p id="today"></p>
+			<p id="date"></p>
+		</div>
+		<div class="zipcode">
+			<input id="zipbox" type="text" placeholder="enter zip">
+			<input id="plus" type="image" onclick="gotNewPlace()" src="../WeatherApp/plus.png" class="button">
+			<button id="submit" onclick="gotNewPlace()">submit</button>
+		</div>
+	</div>
+	<p id="today1"></p>
+	<p id="city"></p>
+	<div class="current">
+		<div id="one">
+			<img id="pic">
+		</div>
+		<div id="temp">
+			<div class="degree">
+				<span id="degree"></span>
+				<img src="../WeatherApp/degree.png">
+				<span id="fahren">F</span>
+			</div>
+			<p id="condition"></p>
+		</div>
+		<div class="curweather">
+			<div class="drop">
+				<img id="dropimg" src="../WeatherApp/drop.png">
+				<img id="windimg" src="../WeatherApp/wind.png">
+			</div>
+			<div class="wind">
+				<span id="drop"></span>
+				<span id="wind"></span>
+			</div>
+		</div>
+	</div>
+	<div id="range">
+		<div class="stepper">
+			<div class="forecast">
+				<p class="day"></p>
+				<img class="weather"></img>
+				<p class="wtext"></p>
+				<div id="highlow">
+					<p class="high"></p>
+					<p class="low"></p>
+				</div>	
+			</div>
+		</div>
+		<div class="stepper">
+			<div class="forecast">
+				<p class="day"></p>
+				<img class="weather"></img>
+				<p class="wtext"></p>
+				<div id="highlow">
+					<p class="high"></p>
+					<p class="low"></p>
+				</div>	
+			</div>
+		</div>
+		<div class="stepper">
+			<div class="forecast">
+				<p class="day"></p>
+				<img class="weather"></img>
+				<p class="wtext"></p>
+				<div id="highlow">
+					<p class="high"></p>
+					<p class="low"></p>
+				</div>	
+			</div>
+		</div>
+		<div class="stepper">
+			<div class="forecast">
+				<p class="day"></p>
+				<img class="weather"></img>
+				<p class="wtext"></p>
+				<div id="highlow">
+					<p class="high"></p>
+					<p class="low"></p>
+				</div>	
+			</div>
+		</div>
+		<div class="stepper">
+			<div class="forecast">
+				<p class="day"></p>
+				<img class="weather"></img>
+				<p class="wtext"></p>
+				<div id="highlow">
+					<p class="high"></p>
+					<p class="low"></p>
+				</div>	
+			</div>
+		</div>
+		<div class="stepper">
+			<div class="forecast">
+				<p class="day"></p>
+				<img class="weather"></img>
+				<p class="wtext"></p>
+				<div id="highlow">
+					<p class="high"></p>
+					<p class="low"></p>
+				</div>
+			</div>
+		</div>
+		<div class="stepper">
+			<div class="forecast">
+				<p class="day"></p>
+				<img class="weather"></img>
+				<p class="wtext"></p>
+				<div id="highlow">
+					<p class="high"></p>
+					<p class="low"></p>
+				</div>
+			</div>
+		</div>
+		<div class="stepper">
+			<div class="forecast">
+				<p class="day"></p>
+				<img class="weather"></img>
+				<p class="wtext"></p>
+				<div id="highlow">
+					<p class="high"></p>
+					<p class="low"></p>
+				</div>
+			</div>
+		</div>
+		<div class="stepper">
+			<div class="forecast">
+				<p class="day"></p>
+				<img class="weather"></img>
+				<p class="wtext"></p>
+				<div id="highlow">
+					<p class="high"></p>
+					<p class="low"></p>
+				</div>
+			</div>
+		</div>
+		<div class="stepper">
+			<div class="forecast">
+				<p class="day"></p>
+				<img class="weather"></img>
+				<p class="wtext"></p>
+				<div id="highlow">
+					<p class="high"></p>
+					<p class="low"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="buttons">
+		<div class="click">
+			<img id="leftButton" onclick="buttonLeft()" src="../WeatherApp/arrow-left.png"></img>
+			<span>previous forecasts</span>
+		</div>
+		<div class="click">
+			<span>more forecasts</span>
+			<img id="rightButton" onclick="buttonRight()" src="../WeatherApp/arrow-right.png"></img>
+		</div>
+	</div>
+	<a href="https://www.yahoo.com/?ilc=401" target="_blank"><img id="yahoo" src="https://poweredby.yahoo.com/purple.png"> </a>
+</main>
+<!-- contains callback function that is called when weather gets here from server --> 
+<script src="weather.js"></script>
+
+<!-- asks server to send weather -->
+<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='davis, ca')&format=json&callback=callbackFunction"></script>
+
+</body>
+</html>
